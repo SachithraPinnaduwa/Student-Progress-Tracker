@@ -2,6 +2,13 @@ from student import Student
 from staff_member import StaffMember
 
 
+def check(pass_credits, defer_credits, fail_credits):
+    arr_of_numbers = [0, 20, 40, 60, 80, 100, 120]
+    if pass_credits in arr_of_numbers and defer_credits in arr_of_numbers and fail_credits in arr_of_numbers:
+        return True
+    return False
+
+
 def main():
     val = True
     while val:
@@ -24,7 +31,7 @@ def main():
                     fail_credits = int(input('Please enter your credits at fail: '))
                 except ValueError as e:
                     print(e)
-                if pass_credits+defer_credits + fail_credits == 120:
+                if (pass_credits+defer_credits + fail_credits == 120) and check(pass_credits, defer_credits, fail_credits):
                     student = Student(student_id, pass_credits, defer_credits, fail_credits)
                     staff_member.add_student(student)
                 else:
@@ -48,7 +55,7 @@ def main():
                     fail_credits = int(input('Please enter your credits at fail: '))
                 except ValueError as e:
                     print(e)
-                if pass_credits + defer_credits + fail_credits == 120:
+                if (pass_credits+defer_credits + fail_credits == 120) and check(pass_credits, defer_credits, fail_credits):
                     student = Student(student_id, pass_credits, defer_credits, fail_credits)
                     student.display_outcome()
                     val = False
